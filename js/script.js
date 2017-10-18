@@ -54,8 +54,7 @@ underline.onclick = function (){
      alert ("It's not a tag name!");
     }
     else{
-   //   console.log(typeof val);
-      var tag = document.querySelectorAll(val); //вот на эту строку он ругается если ввести 1 в инпут или оставить его пустым
+      var tag = document.querySelectorAll(val); 
         if (tag.length == 0) {
               alert('Tag is not exist!');
             }
@@ -79,6 +78,32 @@ countage.onclick = function (){
   }
 
   var myArray = [1, 2, 3, 4, 5];
+  neww.innerHTML = '#9. Array: ' + myArray;
+  calcLength(myArray);
+
+  push.onclick = function(){
+  var addValue = value.value;
+  
+    if (addValue == ''){
+           alert("Введите значение во второе поле");
+           }
+    else {
+        myArray.push(addValue);
+        neww.innerHTML = '#9. ' + 'Массив: ' + myArray;
+        calcLength(myArray);
+      }
+}
+popp.onclick = function(){
+  if (myArray == ''){
+      neww.innerHTML = "Массив пуст";
+      calcLength(myArray);
+           }
+  else {
+    myArray.pop();
+    neww.innerHTML = '#9. ' + 'Массив: ' + myArray;
+    calcLength(myArray);
+      }
+}
   
 function calcLength(arr){
   var sum = 0;
@@ -88,9 +113,9 @@ function calcLength(arr){
       alert('error!');
     }
     else{
-  res.innerHTML = '#9. ' + 'Arr length: ' + sum;
+  res.innerHTML = 'Arr length: ' + sum;
 }}
-calcLength(myArray);
+
 
 domath.onclick = function (){
   var userNum = document.getElementById('math').value;
@@ -134,8 +159,11 @@ domath.onclick = function (){
           else if (userGess == rundomNum) {
              compare.innerHTML = 'Correct!';
              }
+          else if (userGess > rundomNum){
+            compare.innerHTML = 'Sorry! Your number is bigger than needed. You have ' + (3-trys) + ' more trys.';
+            }
           else {
-            compare.innerHTML = 'Sorry! Maybe next time. You have ' + (3-trys) + ' more trys.';
+            compare.innerHTML = 'Sorry! Your number is less than needed. You have ' + (3-trys) + ' more trys.';
             }
           } 
           else if(trys = 4){
